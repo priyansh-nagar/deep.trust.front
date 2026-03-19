@@ -1,3 +1,4 @@
+// DeepTrust Landing Page
 import Navbar from "@/components/Navbar";
 import HeroReveal from "@/components/HeroReveal";
 import HeroQuote from "@/components/HeroQuote";
