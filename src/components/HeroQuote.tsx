@@ -53,9 +53,9 @@ const HeroQuote = () => {
           </p>
 
           <div className="flex items-center justify-center gap-6 mb-16">
-            <button className="bg-primary text-primary-foreground px-8 py-4 font-display text-sm tracking-wider hover:opacity-90 transition-all duration-150 uppercase rounded-lg shadow-deep">
+            <a href="https://deeptrust-sandy.vercel.app/" target="_blank" rel="noopener noreferrer" className="bg-primary text-primary-foreground px-8 py-4 font-display text-sm tracking-wider hover:opacity-90 transition-all duration-150 uppercase rounded-lg shadow-deep inline-block">
               Start Free Trial
-            </button>
+            </a>
             <button className="border border-border px-8 py-4 font-display text-sm tracking-wider text-muted-foreground hover:border-foreground hover:text-foreground transition-all duration-150 uppercase rounded-lg bg-card">
               View Demo
             </button>
