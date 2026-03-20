@@ -39,7 +39,7 @@ const HowItWorks = () => {
               transition={{ duration: 0.6, delay: 0.2 + i * 0.15, ease: [0.2, 0, 0, 1] }}
             >
               <motion.div
-                className="font-calligraphy text-6xl text-muted/30 mb-6"
+                className="font-calligraphy text-6xl text-muted-foreground/50 mb-6"
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.5, delay: 0.4 + i * 0.15, ease: [0.2, 0, 0, 1] }}
