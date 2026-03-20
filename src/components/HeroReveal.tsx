@@ -118,14 +118,15 @@ const HeroReveal = () => {
 
         {/* "DeepTrust" calligraphy text — appears on scroll over the image */}
         <motion.h1
-          className="absolute z-20 font-calligraphy text-7xl md:text-[10rem] lg:text-[14rem] leading-none tracking-tight pointer-events-none select-none"
+          className="absolute z-20 font-calligraphy text-7xl md:text-[10rem] lg:text-[14rem] leading-none tracking-tight pointer-events-none select-none font-black"
           style={{
             opacity: titleOpacity,
             y: titleY,
-            color: "hsl(var(--foreground) / 0.82)",
-            textShadow: "0 10px 30px hsl(var(--background) / 0.22)",
+            color: "hsl(var(--foreground) / 0.92)",
+            textShadow: "0 4px 20px hsl(var(--background) / 0.5), 0 12px 40px hsl(var(--background) / 0.3)",
             fontStyle: "italic",
-            fontWeight: 700,
+            fontWeight: 900,
+            letterSpacing: "-0.02em",
           }}
         >
           Deep Trust
