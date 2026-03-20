@@ -14,7 +14,7 @@ const DiagnosticLens = () => {
   const scanLineY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section ref={sectionRef} className="relative py-[20vh]">
+    <section id="diagnostic-lens" ref={sectionRef} className="relative py-[20vh]">
       <div className="container max-w-7xl mx-auto px-6 mb-16">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}

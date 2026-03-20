@@ -18,7 +18,7 @@ const StatsSection = () => {
   const lineWidth = useTransform(scrollYProgress, [0.2, 0.6], ["0%", "100%"]);
 
   return (
-    <section ref={sectionRef} className="py-[15vh] relative">
+    <section id="results" ref={sectionRef} className="py-[15vh] relative">
       <motion.div
         className="absolute top-0 left-0 h-[1px] bg-primary/30"
         style={{ width: lineWidth }}

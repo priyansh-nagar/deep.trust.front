@@ -13,7 +13,7 @@ const HowItWorks = () => {
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   return (
-    <section ref={sectionRef} className="py-[20vh]">
+    <section id="how-it-works" ref={sectionRef} className="py-[20vh]">
       <div className="container max-w-7xl mx-auto px-6">
         <motion.div
           className="mb-16"
