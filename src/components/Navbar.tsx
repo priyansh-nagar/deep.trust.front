@@ -13,13 +13,17 @@ const Navbar = () => {
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <nav className="fixed top-0 inset-x-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <div className="container max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
-        <div className="flex items-center gap-2">
+        <button onClick={scrollToTop} className="flex items-center gap-2 bg-transparent border-none cursor-pointer">
           <Shield className="w-5 h-5 text-primary" strokeWidth={1.5} />
           <span className="font-display text-sm tracking-tight text-foreground">DeepTrust</span>
-        </div>
+        </button>
         <div className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (
             <button key={item.id} onClick={() => scrollTo(item.id)} className="font-display text-xs tracking-wider text-muted-foreground hover:text-foreground transition-colors duration-150 uppercase bg-transparent border-none cursor-pointer">
