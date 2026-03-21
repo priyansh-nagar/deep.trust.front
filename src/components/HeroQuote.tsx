@@ -163,9 +163,10 @@ const HeroQuote = () => {
 
       <div className="container max-w-5xl mx-auto px-6 text-center relative z-10">
         <motion.div style={{ opacity, y, scale }}>
-          <motion.div className="inline-flex items-center gap-2 border border-border px-4 py-2 mb-10 rounded-full bg-card">
-            <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-            <span className="font-display text-xs tracking-wider text-muted-foreground uppercase">
+          <motion.div className="inline-flex items-center gap-2 border px-4 py-2 mb-10 rounded-full"
+            style={{ borderColor: "hsl(240 10% 20%)", background: "hsl(240 15% 10% / 0.8)" }}>
+            <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: "hsl(190 80% 55%)" }} />
+            <span className="font-display text-xs tracking-wider uppercase" style={{ color: "hsl(240 6% 55%)" }}>
               Advanced AI Detection
             </span>
           </motion.div>
