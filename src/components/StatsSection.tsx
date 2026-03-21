@@ -20,7 +20,6 @@ const CountUp = ({ target, suffix, inView }: { target: number; suffix: string; i
     const tick = (now: number) => {
       const elapsed = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      // spring-like easing
       const eased = 1 - Math.pow(1 - progress, 3);
       start = eased * target;
       setCount(Number(start.toFixed(target % 1 !== 0 ? 1 : 0)));
@@ -42,35 +41,52 @@ const StatsSection = () => {
   const lineWidth = useTransform(scrollYProgress, [0.2, 0.6], ["0%", "100%"]);
 
   return (
-    <section id="results" ref={sectionRef} className="py-[15vh] relative">
+    <section
+      id="results"
+      ref={sectionRef}
+      className="py-[15vh] relative overflow-hidden"
+      style={{ background: "hsl(240 15% 6%)" }}
+    >
+      {/* Glow orbs */}
+      <div className="absolute top-[30%] left-[20%] w-[400px] h-[400px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, hsl(190 80% 50% / 0.06), transparent 70%)" }} />
+      <div className="absolute bottom-[20%] right-[15%] w-[350px] h-[350px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, hsl(255 70% 55% / 0.07), transparent 70%)" }} />
+
       <motion.div
-        className="absolute top-0 left-0 h-[1px] bg-primary/30"
-        style={{ width: lineWidth }}
+        className="absolute top-0 left-0 h-[1px]"
+        style={{ width: lineWidth, background: "linear-gradient(90deg, hsl(190 80% 55% / 0.5), hsl(255 70% 55% / 0.3))" }}
       />
       <motion.div
-        className="absolute bottom-0 right-0 h-[1px] bg-primary/30"
-        style={{ width: lineWidth }}
+        className="absolute bottom-0 right-0 h-[1px]"
+        style={{ width: lineWidth, background: "linear-gradient(90deg, hsl(255 70% 55% / 0.3), hsl(190 80% 55% / 0.5))" }}
       />
 
-      <div className="container max-w-7xl mx-auto px-6">
+      <div className="container max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid md:grid-cols-4 gap-4">
           {stats.map((s, i) => (
             <motion.div
               key={s.label}
-              className="text-center py-8 bg-card rounded-lg border border-border transition-all duration-[400ms] ease-in-out cursor-default"
+              className="text-center py-8 rounded-lg border transition-all duration-[400ms] ease-in-out cursor-default"
+              style={{
+                background: "hsl(240 15% 10% / 0.8)",
+                borderColor: "hsl(240 10% 20%)",
+                backdropFilter: "blur(12px)",
+              }}
               initial={{ opacity: 0, scale: 0.93 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1, ease: [0.42, 0, 0.58, 1] }}
               whileHover={{
                 y: -5,
-                boxShadow: "0 8px 24px -4px hsl(255 70% 55% / 0.15), 0 2px 8px hsl(255 70% 55% / 0.08)",
+                boxShadow: "0 12px 40px -4px hsl(190 80% 55% / 0.2), 0 0 20px hsl(190 80% 55% / 0.08)",
+                borderColor: "hsl(190 80% 55% / 0.25)",
               }}
             >
-              <div className="font-calligraphy text-5xl text-foreground mb-2 tabular-nums">
+              <div className="font-calligraphy text-5xl mb-2 tabular-nums" style={{ color: "hsl(0 0% 95%)" }}>
                 <CountUp target={s.numericValue} suffix={s.suffix} inView={isInView} />
               </div>
-              <div className="font-display text-xs tracking-widest text-primary uppercase mb-1">{s.label}</div>
-              <div className="text-xs text-muted-foreground">{s.sub}</div>
+              <div className="font-display text-xs tracking-widest uppercase mb-1" style={{ color: "hsl(190 80% 55%)" }}>{s.label}</div>
+              <div className="text-xs" style={{ color: "hsl(240 6% 50%)" }}>{s.sub}</div>
             </motion.div>
           ))}
         </div>
