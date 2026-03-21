@@ -100,8 +100,9 @@ const HeroQuote = () => {
   const glowOpacity = useTransform(scrollYProgress, [0.2, 0.4, 0.6, 0.8], [0, 1, 1, 0]);
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 bg-background" />
+    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      style={{ background: "hsl(240 15% 6%)" }}>
+      <div className="absolute inset-0" style={{ background: "hsl(240 15% 6%)" }} />
 
       {/* Neural network canvas */}
       <canvas
