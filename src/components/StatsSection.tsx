@@ -1,12 +1,36 @@
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 
 const stats = [
-  { value: "99.7%", label: "Detection Accuracy", sub: "Industry-leading precision" },
-  { value: "250+", label: "Active Users", sub: "Organizations trusting us" },
-  { value: "5K+", label: "Files Analyzed", sub: "Images scanned to date" },
-  { value: "24/7", label: "Support Available", sub: "Always-on monitoring" },
+  { value: "99.7%", numericValue: 99.7, suffix: "%", label: "Detection Accuracy", sub: "Industry-leading precision" },
+  { value: "250+", numericValue: 250, suffix: "+", label: "Active Users", sub: "Organizations trusting us" },
+  { value: "5K+", numericValue: 5, suffix: "K+", label: "Files Analyzed", sub: "Images scanned to date" },
+  { value: "24/7", numericValue: 24, suffix: "/7", label: "Support Available", sub: "Always-on monitoring" },
 ];
+
+const CountUp = ({ target, suffix, inView }: { target: number; suffix: string; inView: boolean }) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!inView) return;
+    let start = 0;
+    const duration = 1400;
+    const startTime = performance.now();
+
+    const tick = (now: number) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // spring-like easing
+      const eased = 1 - Math.pow(1 - progress, 3);
+      start = eased * target;
+      setCount(Number(start.toFixed(target % 1 !== 0 ? 1 : 0)));
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }, [inView, target]);
+
+  return <>{count}{suffix}</>;
+};
 
 const StatsSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -33,19 +57,18 @@ const StatsSection = () => {
           {stats.map((s, i) => (
             <motion.div
               key={s.label}
-              className="text-center py-8 bg-card rounded-lg border border-border"
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: i * 0.12, ease: [0.2, 0, 0, 1] }}
+              className="text-center py-8 bg-card rounded-lg border border-border transition-all duration-[400ms] ease-in-out cursor-default"
+              initial={{ opacity: 0, scale: 0.93 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.5, delay: i * 0.1, ease: [0.42, 0, 0.58, 1] }}
+              whileHover={{
+                y: -5,
+                boxShadow: "0 8px 24px -4px hsl(255 70% 55% / 0.15), 0 2px 8px hsl(255 70% 55% / 0.08)",
+              }}
             >
-              <motion.div
-                className="font-calligraphy text-5xl text-foreground mb-2"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.5, delay: 0.2 + i * 0.12, type: "spring", stiffness: 200 }}
-              >
-                {s.value}
-              </motion.div>
+              <div className="font-calligraphy text-5xl text-foreground mb-2 tabular-nums">
+                <CountUp target={s.numericValue} suffix={s.suffix} inView={isInView} />
+              </div>
               <div className="font-display text-xs tracking-widest text-primary uppercase mb-1">{s.label}</div>
               <div className="text-xs text-muted-foreground">{s.sub}</div>
             </motion.div>
