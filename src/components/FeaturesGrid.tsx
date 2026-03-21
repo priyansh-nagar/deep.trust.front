@@ -16,7 +16,12 @@ const FeaturesGrid = () => {
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   return (
-    <section id="features" ref={sectionRef} className="py-[20vh]">
+    <section
+      id="features"
+      ref={sectionRef}
+      className="py-[20vh] relative"
+      style={{ background: "hsl(240 20% 99%)" }}
+    >
       <div className="container max-w-7xl mx-auto px-6">
         <motion.div
           className="mb-16"
@@ -37,13 +42,31 @@ const FeaturesGrid = () => {
           {features.map((f, i) => (
             <motion.div
               key={f.title}
-              className="bg-card p-8 group hover:shadow-deep transition-all duration-300 relative overflow-hidden border border-border rounded-lg"
-              initial={{ opacity: 0, y: 40 }}
+              className="bg-card p-8 group relative overflow-hidden border border-border rounded-lg transition-all duration-[400ms] ease-in-out hover:scale-[1.02]"
+              style={{
+                transitionProperty: "transform, box-shadow",
+              }}
+              initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.15 + i * 0.1, ease: [0.2, 0, 0, 1] }}
+              transition={{ duration: 0.4, delay: 0.15 + i * 0.1, ease: [0.42, 0, 0.58, 1] }}
+              whileHover={{
+                boxShadow: "0 8px 32px -4px hsl(190 80% 50% / 0.2), 0 4px 16px -2px hsl(190 80% 50% / 0.1)",
+              }}
             >
               <div className="absolute top-0 left-0 right-0 h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-t-lg" />
-              <f.icon className="w-5 h-5 text-primary mb-6 group-hover:drop-shadow-[0_0_8px_hsl(255_70%_55%/0.4)] transition-all duration-300" strokeWidth={1.5} />
+              <motion.div
+                className="mb-6"
+                whileHover={{
+                  rotate: [0, -10, 10, -5, 0],
+                  scale: [1, 1.15, 1.15, 1.1, 1],
+                  transition: { duration: 0.6, ease: "easeInOut" },
+                }}
+              >
+                <f.icon
+                  className="w-5 h-5 text-primary group-hover:drop-shadow-[0_0_10px_hsl(190_80%_50%/0.5)] transition-all duration-[400ms] ease-in-out"
+                  strokeWidth={1.5}
+                />
+              </motion.div>
               <h3 className="font-display text-sm tracking-tight text-foreground mb-3">{f.title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
             </motion.div>
