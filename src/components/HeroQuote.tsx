@@ -204,7 +204,7 @@ const HeroQuote = () => {
             ))}
           </h2>
 
-          <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed font-body">
+          <p className="text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed font-body" style={{ color: "hsl(240 6% 55%)" }}>
             DeepTrust uses multi-layered neural analysis to distinguish between
             organic capture and synthetic generation in real-time.
           </p>
