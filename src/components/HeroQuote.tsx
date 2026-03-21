@@ -176,11 +176,16 @@ const HeroQuote = () => {
             {words.map((word, i) => (
               <motion.span
                 key={i}
-                className={`inline-block mr-[0.3em] ${
-                  word === "default." 
-                    ? "text-transparent bg-clip-text"
-                    : "text-foreground"
-                }`}
+                className={`inline-block mr-[0.3em]`}
+                style={
+                  word === "calculation."
+                    ? {
+                        backgroundImage: "linear-gradient(135deg, hsl(190 80% 55%), hsl(255 70% 55%), hsl(200 80% 55%))",
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
+                      }
+                    : { color: "hsl(0 0% 93%)" }
+                }
                 style={
                   word === "default."
                     ? {
