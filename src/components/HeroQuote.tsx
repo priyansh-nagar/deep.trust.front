@@ -229,7 +229,8 @@ const HeroQuote = () => {
               />
               Start Free Trial
             </motion.a>
-            <button className="border border-border px-8 py-4 font-display text-sm tracking-wider text-muted-foreground hover:border-foreground hover:text-foreground transition-all duration-150 uppercase rounded-lg bg-card">
+            <button className="border px-8 py-4 font-display text-sm tracking-wider transition-all duration-150 uppercase rounded-lg"
+              style={{ borderColor: "hsl(240 10% 25%)", color: "hsl(240 6% 55%)", background: "hsl(240 15% 10% / 0.8)" }}>
               View Demo
             </button>
           </div>
