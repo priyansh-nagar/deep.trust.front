@@ -242,8 +242,8 @@ const HeroQuote = () => {
               { value: "Enterprise", label: "Grade" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
-                <div className="font-display text-3xl tabular-nums text-foreground">{stat.value}</div>
-                <div className="text-xs text-muted-foreground uppercase tracking-wider mt-1">{stat.label}</div>
+                <div className="font-display text-3xl tabular-nums" style={{ color: "hsl(0 0% 93%)" }}>{stat.value}</div>
+                <div className="text-xs uppercase tracking-wider mt-1" style={{ color: "hsl(240 6% 50%)" }}>{stat.label}</div>
               </div>
             ))}
           </div>
