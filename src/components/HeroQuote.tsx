@@ -172,7 +172,7 @@ const HeroQuote = () => {
           </motion.div>
 
           {/* Word-by-word animated headline */}
-          <h2 className="font-calligraphy text-5xl md:text-7xl lg:text-8xl tracking-tight leading-[0.95] mb-8">
+          <h2 className="font-calligraphy text-5xl md:text-7xl lg:text-8xl tracking-tight leading-[0.95] mb-8" style={{ color: "hsl(0 0% 93%)" }}>
             {words.map((word, i) => (
               <motion.span
                 key={i}
