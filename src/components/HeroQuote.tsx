@@ -186,13 +186,6 @@ const HeroQuote = () => {
                       }
                     : { color: "hsl(0 0% 93%)" }
                 }
-                style={
-                  word === "default."
-                    ? {
-                        backgroundImage: "linear-gradient(135deg, hsl(255 70% 55%), hsl(280 60% 50%), hsl(200 80% 55%))",
-                      }
-                    : undefined
-                }
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
