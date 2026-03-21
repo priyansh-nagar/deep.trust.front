@@ -13,19 +13,36 @@ const HowItWorks = () => {
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   return (
-    <section id="how-it-works" ref={sectionRef} className="py-[20vh]">
-      <div className="container max-w-7xl mx-auto px-6">
+    <section
+      id="how-it-works"
+      ref={sectionRef}
+      className="py-[20vh] relative overflow-hidden"
+      style={{ background: "hsl(240 12% 11%)" }}
+    >
+      {/* Ambient glow */}
+      <div className="absolute top-[20%] right-[10%] w-[500px] h-[500px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, hsl(270 60% 50% / 0.06), transparent 70%)" }} />
+
+      {/* Grid overlay */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: `linear-gradient(hsl(255 70% 55%) 1px, transparent 1px), linear-gradient(90deg, hsl(255 70% 55%) 1px, transparent 1px)`,
+          backgroundSize: "80px 80px",
+        }} />
+
+      <div className="container max-w-7xl mx-auto px-6 relative z-10">
         <motion.div
           className="mb-16"
           initial={{ opacity: 0, y: 60 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.2, 0, 0, 1] }}
         >
-          <span className="font-display text-xs tracking-widest text-muted-foreground uppercase block mb-4">
+          <span className="font-display text-xs tracking-widest uppercase block mb-4"
+            style={{ color: "hsl(190 80% 55% / 0.6)" }}>
             // Process
           </span>
-          <h2 className="font-calligraphy text-4xl md:text-6xl tracking-tight text-foreground">
-            Four steps to <span className="text-primary text-glow">verification</span>
+          <h2 className="font-calligraphy text-4xl md:text-6xl tracking-tight" style={{ color: "hsl(0 0% 93%)" }}>
+            Four steps to <span style={{ color: "hsl(255 70% 55%)", textShadow: "0 0 30px hsl(255 70% 55% / 0.3)" }}>verification</span>
           </h2>
         </motion.div>
 
@@ -33,22 +50,38 @@ const HowItWorks = () => {
           {steps.map((s, i) => (
             <motion.div
               key={s.num}
-              className="bg-card p-8 relative group overflow-hidden border border-border rounded-lg"
+              className="p-8 relative group overflow-hidden rounded-lg border transition-all duration-[400ms] ease-in-out cursor-default"
+              style={{
+                background: "hsl(240 15% 14% / 0.7)",
+                borderColor: "hsl(240 10% 22%)",
+                backdropFilter: "blur(12px)",
+              }}
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 + i * 0.15, ease: [0.2, 0, 0, 1] }}
+              whileHover={{
+                y: -5,
+                boxShadow: "0 12px 40px -4px hsl(255 70% 55% / 0.2)",
+                borderColor: "hsl(255 70% 55% / 0.3)",
+              }}
             >
               <motion.div
-                className="font-calligraphy text-6xl text-muted-foreground/50 mb-6"
+                className="font-calligraphy text-7xl mb-6 font-bold"
+                style={{
+                  color: "transparent",
+                  WebkitTextStroke: "1.5px hsl(190 80% 55% / 0.5)",
+                  textShadow: "0 0 40px hsl(190 80% 55% / 0.15)",
+                }}
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.5, delay: 0.4 + i * 0.15, ease: [0.2, 0, 0, 1] }}
               >
                 {s.num}
               </motion.div>
-              <h3 className="font-display text-sm tracking-tight text-foreground mb-3">{s.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
-              <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+              <h3 className="font-display text-sm tracking-tight mb-3" style={{ color: "hsl(0 0% 90%)" }}>{s.title}</h3>
+              <p className="text-sm leading-relaxed" style={{ color: "hsl(240 6% 55%)" }}>{s.desc}</p>
+              <div className="absolute bottom-0 left-0 right-0 h-[2px] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"
+                style={{ background: "linear-gradient(90deg, hsl(190 80% 55%), hsl(255 70% 55%))" }} />
             </motion.div>
           ))}
         </div>

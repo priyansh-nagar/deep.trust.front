@@ -9,7 +9,7 @@ import StatsSection from "@/components/StatsSection";
 import FooterSection from "@/components/FooterSection";
 
 const Index = () => (
-  <div className="min-h-screen bg-background">
+  <div className="min-h-screen" style={{ background: "hsl(240 15% 6%)" }}>
     <Navbar />
     <HeroReveal />
     <HeroQuote />
