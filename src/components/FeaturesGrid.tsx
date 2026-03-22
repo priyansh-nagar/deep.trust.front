@@ -34,7 +34,7 @@ const FeaturesGrid = () => {
 
       {/* Dark overlay — lets video show through with readable text */}
       <div className="absolute inset-0 z-[1]"
-        style={{ background: "linear-gradient(180deg, hsl(240 15% 4% / 0.75) 0%, hsl(240 15% 6% / 0.65) 50%, hsl(240 15% 4% / 0.8) 100%)" }} />
+        style={{ background: "linear-gradient(180deg, hsl(240 15% 4% / 0.72) 0%, hsl(240 15% 6% / 0.62) 50%, hsl(240 15% 4% / 0.68) 100%)" }} />
 
       {/* Visible glow orbs over video */}
       <motion.div
