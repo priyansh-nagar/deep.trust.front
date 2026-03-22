@@ -34,24 +34,28 @@ const FeaturesGrid = () => {
 
       {/* Dark overlay — lets video show through with readable text */}
       <div className="absolute inset-0 z-[1]"
-        style={{ background: "linear-gradient(180deg, hsl(240 15% 4% / 0.75) 0%, hsl(240 15% 6% / 0.65) 50%, hsl(240 15% 4% / 0.8) 100%)" }} />
+        style={{ background: "linear-gradient(180deg, hsl(240 15% 4% / 0.72) 0%, hsl(240 15% 6% / 0.62) 50%, hsl(240 15% 4% / 0.68) 100%)" }} />
 
-      {/* Visible glow orbs over video */}
+      {/* Cyan tint */}
+      <div className="absolute inset-0 z-[1] pointer-events-none"
+        style={{ background: "radial-gradient(ellipse at center, hsl(190 80% 50% / 0.08), transparent 70%)" }} />
+
+      {/* Glow orbs — matching HeroQuote */}
       <motion.div
-        className="absolute top-[5%] left-[10%] w-[500px] h-[500px] rounded-full pointer-events-none z-[2]"
-        style={{ background: "radial-gradient(circle, hsl(190 80% 55% / 0.18), transparent 70%)", filter: "blur(30px)" }}
-        animate={{ y: [-25, 25, -25], x: [-12, 12, -12] }}
+        className="absolute top-[20%] left-[15%] w-[500px] h-[500px] rounded-full z-[2] pointer-events-none"
+        style={{ background: "radial-gradient(circle, hsl(190 80% 55% / 0.15), transparent 70%)", filter: "blur(40px)" }}
+        animate={{ y: [-20, 20, -20], x: [-10, 10, -10] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute bottom-[10%] right-[10%] w-[400px] h-[400px] rounded-full z-[2] pointer-events-none"
+        style={{ background: "radial-gradient(circle, hsl(255 70% 55% / 0.15), transparent 70%)", filter: "blur(50px)" }}
+        animate={{ y: [15, -15, 15], x: [8, -8, 8] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
-      <motion.div
-        className="absolute bottom-[5%] right-[5%] w-[450px] h-[450px] rounded-full pointer-events-none z-[2]"
-        style={{ background: "radial-gradient(circle, hsl(255 70% 55% / 0.18), transparent 70%)", filter: "blur(40px)" }}
-        animate={{ y: [20, -20, 20], x: [10, -10, 10] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-      />
 
-      {/* Grid overlay — more visible */}
-      <div className="absolute inset-0 opacity-[0.06] pointer-events-none z-[2]"
+      {/* Grid overlay */}
+      <div className="absolute inset-0 opacity-[0.05] pointer-events-none z-[2]"
         style={{
           backgroundImage: `linear-gradient(hsl(190 80% 55%) 1px, transparent 1px), linear-gradient(90deg, hsl(190 80% 55%) 1px, transparent 1px)`,
           backgroundSize: "60px 60px",

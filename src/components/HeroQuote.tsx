@@ -36,11 +36,11 @@ const HeroQuote = () => {
         src={labVideo.url}
       />
 
-      {/* Dark overlay for text readability — semi-transparent so video shows through */}
+      {/* Dark overlay */}
       <div className="absolute inset-0 z-[1]"
-        style={{ background: "linear-gradient(180deg, hsl(240 15% 4% / 0.7) 0%, hsl(240 15% 6% / 0.6) 50%, hsl(240 15% 4% / 0.75) 100%)" }} />
+        style={{ background: "linear-gradient(180deg, hsl(240 15% 4% / 0.72) 0%, hsl(240 15% 6% / 0.62) 50%, hsl(240 15% 4% / 0.68) 100%)" }} />
 
-      {/* Cyan tint overlay for color matching */}
+      {/* Cyan tint */}
       <div className="absolute inset-0 z-[1] pointer-events-none"
         style={{ background: "radial-gradient(ellipse at center, hsl(190 80% 50% / 0.08), transparent 70%)" }} />
 
