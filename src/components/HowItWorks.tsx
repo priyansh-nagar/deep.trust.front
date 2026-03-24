@@ -83,7 +83,7 @@ const HowItWorks = () => {
                 }}
               >
                 {s.num}
-              </motion.div>
+              </div>
               <h3 className="font-display text-sm tracking-tight mb-3" style={{ color: "hsl(0 0% 90%)" }}>{s.title}</h3>
               <p className="text-sm leading-relaxed" style={{ color: "hsl(240 6% 55%)" }}>{s.desc}</p>
               <div className="absolute bottom-0 left-0 right-0 h-[2px] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"
