@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import mirrorVideo from "../../public/mirror-robot.mp4.asset.json";
+import robotMaskVideo from "../../public/robot-mask.mp4.asset.json";
 
 const stats = [
   { value: "99.7%", numericValue: 99.7, suffix: "%", label: "Detection Accuracy", sub: "Industry-leading precision" },
@@ -47,14 +48,14 @@ const StatsSection = () => {
       ref={sectionRef}
       className="py-[15vh] relative overflow-hidden"
     >
-      {/* Video background */}
+      {/* Video background - robot mask */}
       <video
         autoPlay
         muted
         loop
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-[0]"
-        src={mirrorVideo.url}
+        src={robotMaskVideo.url}
       />
 
       {/* Dark overlay */}
