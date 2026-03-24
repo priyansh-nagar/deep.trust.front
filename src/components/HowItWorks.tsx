@@ -74,16 +74,13 @@ const HowItWorks = () => {
                 transition: { duration: 0.3 },
               }}
             >
-              <motion.div
+              <div
                 className="font-calligraphy text-7xl mb-6 font-bold"
                 style={{
                   color: "transparent",
                   WebkitTextStroke: "1.5px hsl(190 80% 55% / 0.5)",
                   textShadow: "0 0 40px hsl(190 80% 55% / 0.15)",
                 }}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.5, delay: 0.3 + i * 0.12, ease: [0.42, 0, 0.58, 1] }}
               >
                 {s.num}
               </motion.div>
