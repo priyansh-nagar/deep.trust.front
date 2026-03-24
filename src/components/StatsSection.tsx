@@ -48,14 +48,14 @@ const StatsSection = () => {
       ref={sectionRef}
       className="py-[15vh] relative overflow-hidden"
     >
-      {/* Video background */}
+      {/* Video background - robot mask */}
       <video
         autoPlay
         muted
         loop
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-[0]"
-        src={mirrorVideo.url}
+        src={robotMaskVideo.url}
       />
 
       {/* Dark overlay */}
