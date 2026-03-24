@@ -70,8 +70,17 @@ const HeroReveal = () => {
           className="absolute inset-0 z-0"
           style={{ opacity: bgOpacity }}
         >
-          {/* Deep dark base */}
-          <div className="absolute inset-0" style={{ background: "hsl(240 20% 6%)" }} />
+          {/* Video background - robot removing human mask */}
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            src={robotMaskVideo.url}
+          />
+          {/* Dark overlay over video */}
+          <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, hsl(240 15% 4% / 0.7) 0%, hsl(240 15% 6% / 0.6) 50%, hsl(240 15% 4% / 0.65) 100%)" }} />
 
           {/* Subtle radial highlights */}
           <div className="absolute inset-0 overflow-hidden">
