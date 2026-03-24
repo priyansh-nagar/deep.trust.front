@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import mirrorVideo from "../../public/mirror-robot.mp4.asset.json";
 
 const steps = [
   { num: "01", title: "Upload Media", desc: "Upload your video or image files securely through our platform or API." },
@@ -18,23 +17,16 @@ const HowItWorks = () => {
       id="how-it-works"
       ref={sectionRef}
       className="py-[20vh] relative overflow-hidden"
+      style={{ background: "linear-gradient(180deg, hsl(240 15% 5%) 0%, hsl(240 18% 8%) 50%, hsl(240 15% 5%) 100%)" }}
     >
-      {/* Video background */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover z-[0]"
-        src={mirrorVideo.url}
-      />
-
-      {/* Dark overlay */}
-      <div className="absolute inset-0 z-[1]"
-        style={{ background: "linear-gradient(180deg, hsl(240 15% 4% / 0.75) 0%, hsl(240 15% 6% / 0.65) 50%, hsl(240 15% 4% / 0.70) 100%)" }} />
+      {/* Accent orbs */}
+      <div className="absolute top-[20%] right-[15%] w-[450px] h-[450px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, hsl(255 70% 55% / 0.05), transparent 70%)", filter: "blur(50px)" }} />
+      <div className="absolute bottom-[15%] left-[10%] w-[350px] h-[350px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, hsl(190 80% 55% / 0.04), transparent 70%)", filter: "blur(50px)" }} />
 
       {/* Grid overlay */}
-      <div className="absolute inset-0 z-[1] opacity-[0.03] pointer-events-none"
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
           backgroundImage: `linear-gradient(hsl(255 70% 55%) 1px, transparent 1px), linear-gradient(90deg, hsl(255 70% 55%) 1px, transparent 1px)`,
           backgroundSize: "80px 80px",
@@ -62,24 +54,23 @@ const HowItWorks = () => {
               key={s.num}
               className="p-8 relative group overflow-hidden rounded-lg border cursor-default"
               style={{
-                background: "hsl(240 15% 14% / 0.7)",
-                borderColor: "hsl(240 10% 22%)",
+                background: "linear-gradient(135deg, hsl(240 18% 12%) 0%, hsl(240 15% 8%) 100%)",
+                borderColor: "hsl(240 10% 20%)",
               }}
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.2 + i * 0.12, ease: [0.42, 0, 0.58, 1] }}
               whileHover={{
-                boxShadow: "0 12px 40px -4px hsl(255 70% 55% / 0.2)",
-                borderColor: "hsl(255 70% 55% / 0.3)",
+                boxShadow: "0 12px 40px -4px hsl(255 70% 55% / 0.15)",
+                borderColor: "hsl(255 70% 55% / 0.25)",
                 transition: { duration: 0.3 },
               }}
             >
               <div
                 className="font-calligraphy text-7xl mb-6 font-bold"
                 style={{
-                  color: "transparent",
-                  WebkitTextStroke: "1.5px hsl(190 80% 55% / 0.5)",
-                  textShadow: "0 0 40px hsl(190 80% 55% / 0.15)",
+                  color: "hsl(190 80% 55% / 0.25)",
+                  textShadow: "0 0 40px hsl(190 80% 55% / 0.1)",
                 }}
               >
                 {s.num}
