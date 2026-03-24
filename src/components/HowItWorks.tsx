@@ -69,25 +69,21 @@ const HowItWorks = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.2 + i * 0.12, ease: [0.42, 0, 0.58, 1] }}
               whileHover={{
-                y: -5,
                 boxShadow: "0 12px 40px -4px hsl(255 70% 55% / 0.2)",
                 borderColor: "hsl(255 70% 55% / 0.3)",
                 transition: { duration: 0.3 },
               }}
             >
-              <motion.div
+              <div
                 className="font-calligraphy text-7xl mb-6 font-bold"
                 style={{
                   color: "transparent",
                   WebkitTextStroke: "1.5px hsl(190 80% 55% / 0.5)",
                   textShadow: "0 0 40px hsl(190 80% 55% / 0.15)",
                 }}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.5, delay: 0.3 + i * 0.12, ease: [0.42, 0, 0.58, 1] }}
               >
                 {s.num}
-              </motion.div>
+              </div>
               <h3 className="font-display text-sm tracking-tight mb-3" style={{ color: "hsl(0 0% 90%)" }}>{s.title}</h3>
               <p className="text-sm leading-relaxed" style={{ color: "hsl(240 6% 55%)" }}>{s.desc}</p>
               <div className="absolute bottom-0 left-0 right-0 h-[2px] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"

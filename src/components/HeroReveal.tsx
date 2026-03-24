@@ -2,6 +2,7 @@ import { useRef, useState, useCallback } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import humanImg from "@/assets/human-portrait.jpg";
 import robotImg from "@/assets/robot-wireframe.jpg";
+import robotMaskVideo from "../../public/robot-mask.mp4.asset.json";
 
 const scanDocuments = [
   { label: "passport_scan.pdf", status: "VERIFIED", confidence: "99.2%", x: "5%", y: "8%", delay: 0 },
@@ -69,8 +70,17 @@ const HeroReveal = () => {
           className="absolute inset-0 z-0"
           style={{ opacity: bgOpacity }}
         >
-          {/* Deep dark base */}
-          <div className="absolute inset-0" style={{ background: "hsl(240 20% 6%)" }} />
+          {/* Video background - robot removing human mask */}
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            src={robotMaskVideo.url}
+          />
+          {/* Dark overlay over video */}
+          <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, hsl(240 15% 4% / 0.7) 0%, hsl(240 15% 6% / 0.6) 50%, hsl(240 15% 4% / 0.65) 100%)" }} />
 
           {/* Subtle radial highlights */}
           <div className="absolute inset-0 overflow-hidden">

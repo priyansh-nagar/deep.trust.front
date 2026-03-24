@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Image, Mic, ScanEye, AudioLines } from "lucide-react";
-import mirrorVideo from "../../public/mirror-robot.mp4.asset.json";
+import labVideo from "../../public/lab-robots.mp4.asset.json";
 
 const words = ["Trust", "is", "built", "on", "truth,", "not", "appearances."];
 
@@ -25,7 +25,7 @@ const HeroQuote = () => {
         loop
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-[0]"
-        src={mirrorVideo.url}
+        src={labVideo.url}
       />
 
       {/* Dark overlay */}
