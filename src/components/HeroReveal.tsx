@@ -2,6 +2,7 @@ import { useRef, useState, useCallback } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import humanImg from "@/assets/human-portrait.jpg";
 import robotImg from "@/assets/robot-wireframe.jpg";
+import robotMaskVideo from "../../public/robot-mask.mp4.asset.json";
 
 const scanDocuments = [
   { label: "passport_scan.pdf", status: "VERIFIED", confidence: "99.2%", x: "5%", y: "8%", delay: 0 },
