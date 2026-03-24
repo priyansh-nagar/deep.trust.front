@@ -69,7 +69,6 @@ const HowItWorks = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.2 + i * 0.12, ease: [0.42, 0, 0.58, 1] }}
               whileHover={{
-                y: -5,
                 boxShadow: "0 12px 40px -4px hsl(255 70% 55% / 0.2)",
                 borderColor: "hsl(255 70% 55% / 0.3)",
                 transition: { duration: 0.3 },
