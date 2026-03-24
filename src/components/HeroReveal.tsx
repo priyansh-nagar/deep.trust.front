@@ -3,7 +3,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import humanImg from "@/assets/human-portrait.jpg";
 import robotImg from "@/assets/robot-wireframe.jpg";
 
-
 const scanDocuments = [
   { label: "passport_scan.pdf", status: "VERIFIED", confidence: "99.2%", x: "5%", y: "8%", delay: 0 },
   { label: "id_front.jpg", status: "ANALYZING", confidence: "87.4%", x: "68%", y: "12%", delay: 0.3 },
@@ -33,15 +32,18 @@ const HeroReveal = () => {
     offset: ["start start", "end start"],
   });
 
-  const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.55, 0.45]);
-  const imageBorderRadius = useTransform(scrollYProgress, [0, 0.5], [0, 24]);
-  const titleOpacity = useTransform(scrollYProgress, [0.25, 0.45], [0, 1]);
-  const titleY = useTransform(scrollYProgress, [0.25, 0.45], [60, 0]);
-  const quoteOpacity = useTransform(scrollYProgress, [0.45, 0.65], [0, 1]);
-  const quoteY = useTransform(scrollYProgress, [0.45, 0.65], [40, 0]);
+  // Image shrinks fully and becomes invisible
+  const imageScale = useTransform(scrollYProgress, [0, 0.35, 0.55], [1, 0.4, 0]);
+  const imageOpacity = useTransform(scrollYProgress, [0.35, 0.5], [1, 0]);
+  const imageBorderRadius = useTransform(scrollYProgress, [0, 0.35], [0, 24]);
+  const titleOpacity = useTransform(scrollYProgress, [0.3, 0.5], [0, 1]);
+  const titleY = useTransform(scrollYProgress, [0.3, 0.5], [60, 0]);
+  const titleScale = useTransform(scrollYProgress, [0.3, 0.5], [0.85, 1]);
+  const quoteOpacity = useTransform(scrollYProgress, [0.5, 0.65], [0, 1]);
+  const quoteY = useTransform(scrollYProgress, [0.5, 0.65], [40, 0]);
   const overlayOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 0.5]);
 
-  // Background transitions: dark bg + scanning elements appear as image shrinks
+  // Background transitions
   const bgOpacity = useTransform(scrollYProgress, [0.15, 0.45], [0, 1]);
   const gridOpacity = useTransform(scrollYProgress, [0.2, 0.5], [0, 0.06]);
   const scanElementsOpacity = useTransform(scrollYProgress, [0.3, 0.55], [0, 1]);
@@ -65,22 +67,36 @@ const HeroReveal = () => {
     <section ref={sectionRef} className="relative h-[300vh]">
       <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
 
-        {/* Dark scanning background — revealed as image shrinks */}
+        {/* Vibrant dark background with color accents — revealed as image shrinks */}
         <motion.div
           className="absolute inset-0 z-0"
           style={{ opacity: bgOpacity }}
         >
-          {/* Dark background */}
-          <div className="absolute inset-0" style={{ background: "hsl(240 15% 4%)" }} />
+          {/* Rich gradient background */}
+          <div className="absolute inset-0" style={{
+            background: "radial-gradient(ellipse at 30% 20%, hsl(255 50% 12%) 0%, hsl(240 20% 5%) 50%, hsl(220 30% 4%) 100%)"
+          }} />
 
-          {/* Subtle radial highlights */}
+          {/* Vibrant color orbs */}
           <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-[10%] left-[15%] w-[500px] h-[500px] rounded-full"
-              style={{ background: "radial-gradient(circle, hsl(255 70% 55% / 0.08), transparent 70%)" }} />
-            <div className="absolute bottom-[10%] right-[10%] w-[400px] h-[400px] rounded-full"
-              style={{ background: "radial-gradient(circle, hsl(200 80% 50% / 0.06), transparent 70%)" }} />
-            <div className="absolute top-[50%] left-[50%] w-[600px] h-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full"
-              style={{ background: "radial-gradient(circle, hsl(255 40% 30% / 0.05), transparent 60%)" }} />
+            <motion.div
+              className="absolute top-[5%] left-[10%] w-[600px] h-[600px] rounded-full"
+              style={{ background: "radial-gradient(circle, hsl(255 80% 50% / 0.12), transparent 60%)", filter: "blur(80px)" }}
+              animate={{ x: [-20, 20, -20], y: [-10, 10, -10] }}
+              transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.div
+              className="absolute top-[40%] right-[5%] w-[500px] h-[500px] rounded-full"
+              style={{ background: "radial-gradient(circle, hsl(190 90% 50% / 0.1), transparent 60%)", filter: "blur(70px)" }}
+              animate={{ x: [15, -15, 15], y: [10, -10, 10] }}
+              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.div
+              className="absolute bottom-[10%] left-[30%] w-[450px] h-[450px] rounded-full"
+              style={{ background: "radial-gradient(circle, hsl(320 60% 45% / 0.08), transparent 60%)", filter: "blur(60px)" }}
+              animate={{ x: [10, -10, 10], y: [-15, 15, -15] }}
+              transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+            />
           </div>
 
           {/* Grid overlay */}
@@ -129,7 +145,6 @@ const HeroReveal = () => {
           >
             <div className="w-full h-full rounded-2xl backdrop-blur-2xl border border-white/[0.08] overflow-hidden"
               style={{ background: "hsl(240 20% 14% / 0.5)" }}>
-              {/* Scanning line inside lens */}
               <motion.div
                 className="absolute inset-x-0 h-[1px] z-20"
                 style={{
@@ -138,14 +153,11 @@ const HeroReveal = () => {
                   boxShadow: "0 0 20px hsl(255 70% 55% / 0.5)",
                 }}
               />
-              {/* Heatmap overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-red-500/10 mix-blend-overlay" />
-              {/* Corner brackets */}
               <div className="absolute top-3 left-3 w-5 h-5 border-t border-l border-white/20" />
               <div className="absolute top-3 right-3 w-5 h-5 border-t border-r border-white/20" />
               <div className="absolute bottom-3 left-3 w-5 h-5 border-b border-l border-white/20" />
               <div className="absolute bottom-3 right-3 w-5 h-5 border-b border-r border-white/20" />
-              {/* Lens label */}
               <div className="absolute bottom-4 left-4 right-4">
                 <div className="font-display text-[9px] tracking-widest text-emerald-400 uppercase">Anomaly Scan</div>
                 <div className="font-display text-[9px] tracking-wider text-white/40 mt-1">Confidence: 97.3%</div>
@@ -153,7 +165,7 @@ const HeroReveal = () => {
             </div>
           </motion.div>
 
-          {/* Horizontal scan line across the whole background */}
+          {/* Horizontal scan line */}
           <motion.div
             className="absolute inset-x-0 h-[1px] z-[5] pointer-events-none"
             style={{
@@ -164,7 +176,7 @@ const HeroReveal = () => {
           />
         </motion.div>
 
-        {/* Soft gradient blobs (visible initially) */}
+        {/* Soft gradient blobs (visible initially, fade out) */}
         <motion.div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ opacity: useTransform(scrollYProgress, [0.1, 0.4], [1, 0]) }}>
           <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full opacity-30"
             style={{ background: "radial-gradient(circle, hsl(255 70% 55% / 0.15), transparent 70%)" }} />
@@ -172,12 +184,13 @@ const HeroReveal = () => {
             style={{ background: "radial-gradient(circle, hsl(200 80% 60% / 0.12), transparent 70%)" }} />
         </motion.div>
 
-        {/* Image container that shrinks on scroll */}
+        {/* Image container that shrinks and fades */}
         <motion.div
           ref={containerRef}
           className="relative cursor-none z-10 overflow-hidden"
           style={{
             scale: imageScale,
+            opacity: imageOpacity,
             borderRadius: imageBorderRadius,
             width: "100vw",
             height: "100vh",
@@ -234,24 +247,23 @@ const HeroReveal = () => {
               }}
             />
           )}
-
-          <div className="absolute inset-x-0 z-[3] h-[1px] scanning-line animate-scan-line pointer-events-none" />
         </motion.div>
 
-        {/* "DeepTrust" calligraphy text */}
+        {/* "DeepTrust" calligraphy text — appears centrally as image vanishes */}
         <motion.h1
-          className="absolute z-20 font-calligraphy text-7xl md:text-[10rem] lg:text-[14rem] leading-none tracking-tight pointer-events-none select-none font-black"
+          className="absolute z-20 font-calligraphy text-7xl md:text-[10rem] lg:text-[14rem] leading-none tracking-tight pointer-events-none select-none font-black whitespace-nowrap"
           style={{
             opacity: titleOpacity,
             y: titleY,
+            scale: titleScale,
             color: "hsl(0 0% 95%)",
-            textShadow: "0 4px 30px hsl(255 70% 55% / 0.3), 0 12px 60px hsl(0 0% 0% / 0.5)",
+            textShadow: "0 4px 30px hsl(255 70% 55% / 0.4), 0 0 80px hsl(190 80% 55% / 0.15), 0 12px 60px hsl(0 0% 0% / 0.5)",
             fontStyle: "italic",
             fontWeight: 900,
             letterSpacing: "-0.02em",
           }}
         >
-          Deep Trust
+          DeepTrust
         </motion.h1>
 
         <motion.p

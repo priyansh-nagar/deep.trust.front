@@ -1,7 +1,5 @@
 import { useRef, useEffect, useState } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import mirrorVideo from "../../public/mirror-robot.mp4.asset.json";
-import robotMaskVideo from "../../public/robot-mask.mp4.asset.json";
 
 const stats = [
   { value: "99.7%", numericValue: 99.7, suffix: "%", label: "Detection Accuracy", sub: "Industry-leading precision" },
@@ -47,20 +45,13 @@ const StatsSection = () => {
       id="results"
       ref={sectionRef}
       className="py-[15vh] relative overflow-hidden"
+      style={{ background: "linear-gradient(180deg, hsl(240 15% 5%) 0%, hsl(240 20% 9%) 50%, hsl(240 15% 5%) 100%)" }}
     >
-      {/* Video background - robot mask */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover z-[0]"
-        src={robotMaskVideo.url}
-      />
-
-      {/* Dark overlay */}
-      <div className="absolute inset-0 z-[1]"
-        style={{ background: "linear-gradient(180deg, hsl(240 15% 4% / 0.78) 0%, hsl(240 15% 6% / 0.68) 50%, hsl(240 15% 4% / 0.75) 100%)" }} />
+      {/* Accent orbs */}
+      <div className="absolute top-[20%] left-[20%] w-[400px] h-[400px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, hsl(190 80% 55% / 0.05), transparent 70%)", filter: "blur(50px)" }} />
+      <div className="absolute bottom-[15%] right-[15%] w-[350px] h-[350px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, hsl(255 70% 55% / 0.05), transparent 70%)", filter: "blur(50px)" }} />
 
       <motion.div
         className="absolute top-0 left-0 h-[1px] z-[2]"
@@ -78,15 +69,15 @@ const StatsSection = () => {
               key={s.label}
               className="text-center py-8 rounded-lg border cursor-default"
               style={{
-                background: "hsl(240 15% 10% / 0.8)",
+                background: "linear-gradient(135deg, hsl(240 18% 12%) 0%, hsl(240 15% 8%) 100%)",
                 borderColor: "hsl(240 10% 20%)",
               }}
               initial={{ opacity: 0, scale: 0.93 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1, ease: [0.42, 0, 0.58, 1] }}
               whileHover={{
-                boxShadow: "0 12px 40px -4px hsl(190 80% 55% / 0.2), 0 0 20px hsl(190 80% 55% / 0.08)",
-                borderColor: "hsl(190 80% 55% / 0.25)",
+                boxShadow: "0 12px 40px -4px hsl(190 80% 55% / 0.15), 0 0 20px hsl(190 80% 55% / 0.06)",
+                borderColor: "hsl(190 80% 55% / 0.2)",
                 transition: { duration: 0.3 },
               }}
             >
