@@ -84,7 +84,6 @@ const StatsSection = () => {
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1, ease: [0.42, 0, 0.58, 1] }}
               whileHover={{
-                y: -5,
                 boxShadow: "0 12px 40px -4px hsl(190 80% 55% / 0.2), 0 0 20px hsl(190 80% 55% / 0.08)",
                 borderColor: "hsl(190 80% 55% / 0.25)",
                 transition: { duration: 0.3 },
