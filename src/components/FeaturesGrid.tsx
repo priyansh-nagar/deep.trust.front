@@ -20,19 +20,28 @@ const FeaturesGrid = () => {
       id="features"
       ref={sectionRef}
       className="py-[20vh] relative overflow-hidden"
-      style={{ background: "linear-gradient(180deg, hsl(240 18% 7%) 0%, hsl(240 20% 10%) 50%, hsl(240 18% 7%) 100%)" }}
+      style={{ background: "linear-gradient(180deg, hsl(240 18% 7%) 0%, hsl(250 22% 12%) 50%, hsl(240 18% 7%) 100%)" }}
     >
-      {/* Accent glow orbs */}
-      <div className="absolute top-[10%] left-[10%] w-[500px] h-[500px] rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, hsl(190 80% 55% / 0.06), transparent 70%)", filter: "blur(60px)" }} />
-      <div className="absolute bottom-[10%] right-[10%] w-[400px] h-[400px] rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, hsl(255 70% 55% / 0.06), transparent 70%)", filter: "blur(60px)" }} />
+      {/* Color accents */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, hsl(320 50% 40% / 0.08), transparent 65%)", filter: "blur(70px)" }} />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, hsl(190 80% 45% / 0.08), transparent 65%)", filter: "blur(60px)" }} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, hsl(255 60% 50% / 0.06), transparent 60%)", filter: "blur(80px)" }} />
 
-      {/* Grid overlay */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
+      {/* White constellation pattern */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.04]"
         style={{
-          backgroundImage: `linear-gradient(hsl(190 80% 55%) 1px, transparent 1px), linear-gradient(90deg, hsl(190 80% 55%) 1px, transparent 1px)`,
-          backgroundSize: "80px 80px",
+          backgroundImage: `radial-gradient(1.5px 1.5px at 20px 30px, hsl(0 0% 100%) 50%, transparent 50%),
+            radial-gradient(1px 1px at 80px 60px, hsl(0 0% 100%) 50%, transparent 50%),
+            radial-gradient(1.5px 1.5px at 140px 120px, hsl(0 0% 100%) 50%, transparent 50%),
+            radial-gradient(1px 1px at 200px 80px, hsl(0 0% 100%) 50%, transparent 50%),
+            radial-gradient(2px 2px at 60px 150px, hsl(0 0% 100%) 50%, transparent 50%),
+            radial-gradient(1px 1px at 180px 20px, hsl(0 0% 100%) 50%, transparent 50%),
+            radial-gradient(1.5px 1.5px at 100px 180px, hsl(0 0% 100%) 50%, transparent 50%),
+            radial-gradient(1px 1px at 240px 160px, hsl(0 0% 100%) 50%, transparent 50%)`,
+          backgroundSize: "260px 200px",
         }} />
 
       <div className="container max-w-7xl mx-auto px-6 relative z-10">
@@ -71,26 +80,13 @@ const FeaturesGrid = () => {
                 transition: { duration: 0.4, ease: "easeInOut" },
               }}
             >
-              {/* Top accent line */}
               <div className="absolute top-0 left-0 right-0 h-[2px] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-t-lg"
                 style={{ background: "linear-gradient(90deg, hsl(190 80% 55%), hsl(255 70% 60%))" }} />
 
-              {/* Card inner glow on hover */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-lg"
                 style={{ background: "radial-gradient(ellipse at top, hsl(190 80% 55% / 0.06), transparent 70%)" }} />
 
-              <motion.div
-                className="mb-6 relative"
-                animate={{
-                  rotate: [0, 3, -3, 0],
-                  scale: [1, 1.08, 1, 1.08, 1],
-                }}
-                transition={{
-                  duration: 4 + i * 0.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
+              <div className="mb-6 relative">
                 <f.icon
                   className="w-6 h-6"
                   strokeWidth={1.5}
@@ -98,7 +94,7 @@ const FeaturesGrid = () => {
                 />
                 <div className="absolute -inset-3 rounded-full opacity-50 group-hover:opacity-80 transition-opacity duration-500"
                   style={{ background: "radial-gradient(circle, hsl(190 80% 55% / 0.25), transparent 70%)" }} />
-              </motion.div>
+              </div>
               <h3 className="font-display text-sm tracking-tight mb-3" style={{ color: "hsl(0 0% 93%)" }}>{f.title}</h3>
               <p className="text-sm leading-relaxed" style={{ color: "hsl(0 0% 55%)" }}>{f.desc}</p>
             </motion.div>
