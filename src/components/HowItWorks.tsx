@@ -76,8 +76,8 @@ const HowItWorks = () => {
               <div
                 className="font-calligraphy text-7xl mb-6 font-bold"
                 style={{
-                  color: "hsl(190 80% 55% / 0.25)",
-                  textShadow: "0 0 40px hsl(190 80% 55% / 0.1)",
+                  color: "hsl(255 70% 65% / 0.35)",
+                  textShadow: "0 0 30px hsl(255 70% 55% / 0.15)",
                 }}
               >
                 {s.num}
