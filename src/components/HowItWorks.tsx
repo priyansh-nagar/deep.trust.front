@@ -28,7 +28,7 @@ const HowItWorks = () => {
         style={{ background: "radial-gradient(circle, hsl(320 50% 40% / 0.05), transparent 60%)", filter: "blur(70px)" }} />
 
       {/* White constellation pattern */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.04]"
+      <div className="absolute inset-0 pointer-events-none opacity-[0.18]"
         style={{
           backgroundImage: `radial-gradient(1.5px 1.5px at 20px 30px, hsl(0 0% 100%) 50%, transparent 50%),
             radial-gradient(1px 1px at 80px 60px, hsl(0 0% 100%) 50%, transparent 50%),
@@ -76,8 +76,8 @@ const HowItWorks = () => {
               <div
                 className="font-calligraphy text-7xl mb-6 font-bold"
                 style={{
-                  color: "hsl(190 80% 55% / 0.25)",
-                  textShadow: "0 0 40px hsl(190 80% 55% / 0.1)",
+                  color: "hsl(255 70% 65% / 0.35)",
+                  textShadow: "0 0 30px hsl(255 70% 55% / 0.15)",
                 }}
               >
                 {s.num}
