@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { useInView } from "framer-motion";
 
 const stats = [
   { value: "99.7%", numericValue: 99.7, suffix: "%", label: "Detection Accuracy", sub: "Industry-leading precision" },
@@ -13,7 +13,6 @@ const CountUp = ({ target, suffix, inView }: { target: number; suffix: string; i
 
   useEffect(() => {
     if (!inView) return;
-    let start = 0;
     const duration = 1400;
     const startTime = performance.now();
 
@@ -21,8 +20,7 @@ const CountUp = ({ target, suffix, inView }: { target: number; suffix: string; i
       const elapsed = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      start = eased * target;
-      setCount(Number(start.toFixed(target % 1 !== 0 ? 1 : 0)));
+      setCount(Number((eased * target).toFixed(target % 1 !== 0 ? 1 : 0)));
       if (progress < 1) requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
@@ -34,51 +32,54 @@ const CountUp = ({ target, suffix, inView }: { target: number; suffix: string; i
 const StatsSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-  const lineWidth = useTransform(scrollYProgress, [0.2, 0.6], ["0%", "100%"]);
 
   return (
     <section
       id="results"
       ref={sectionRef}
       className="py-[15vh] relative overflow-hidden"
-      style={{ background: "linear-gradient(180deg, hsl(240 15% 5%) 0%, hsl(240 20% 9%) 50%, hsl(240 15% 5%) 100%)" }}
+      style={{ background: "linear-gradient(180deg, hsl(240 15% 5%) 0%, hsl(250 22% 11%) 50%, hsl(240 15% 5%) 100%)" }}
     >
-      {/* Accent orbs */}
-      <div className="absolute top-[20%] left-[20%] w-[400px] h-[400px] rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, hsl(190 80% 55% / 0.05), transparent 70%)", filter: "blur(50px)" }} />
-      <div className="absolute bottom-[15%] right-[15%] w-[350px] h-[350px] rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, hsl(255 70% 55% / 0.05), transparent 70%)", filter: "blur(50px)" }} />
+      {/* Color accents */}
+      <div className="absolute top-[15%] left-[15%] w-[450px] h-[450px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, hsl(190 80% 55% / 0.07), transparent 65%)", filter: "blur(55px)" }} />
+      <div className="absolute bottom-[10%] right-[10%] w-[400px] h-[400px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, hsl(255 70% 55% / 0.07), transparent 65%)", filter: "blur(55px)" }} />
+      <div className="absolute top-[50%] right-[30%] w-[350px] h-[350px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, hsl(320 50% 40% / 0.05), transparent 60%)", filter: "blur(60px)" }} />
 
-      <motion.div
-        className="absolute top-0 left-0 h-[1px] z-[2]"
-        style={{ width: lineWidth, background: "linear-gradient(90deg, hsl(190 80% 55% / 0.5), hsl(255 70% 55% / 0.3))" }}
-      />
-      <motion.div
-        className="absolute bottom-0 right-0 h-[1px] z-[2]"
-        style={{ width: lineWidth, background: "linear-gradient(90deg, hsl(255 70% 55% / 0.3), hsl(190 80% 55% / 0.5))" }}
-      />
+      {/* White constellation pattern */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.04]"
+        style={{
+          backgroundImage: `radial-gradient(1.5px 1.5px at 20px 30px, hsl(0 0% 100%) 50%, transparent 50%),
+            radial-gradient(1px 1px at 80px 60px, hsl(0 0% 100%) 50%, transparent 50%),
+            radial-gradient(1.5px 1.5px at 140px 120px, hsl(0 0% 100%) 50%, transparent 50%),
+            radial-gradient(1px 1px at 200px 80px, hsl(0 0% 100%) 50%, transparent 50%),
+            radial-gradient(2px 2px at 60px 150px, hsl(0 0% 100%) 50%, transparent 50%),
+            radial-gradient(1px 1px at 180px 20px, hsl(0 0% 100%) 50%, transparent 50%),
+            radial-gradient(1.5px 1.5px at 100px 180px, hsl(0 0% 100%) 50%, transparent 50%),
+            radial-gradient(1px 1px at 240px 160px, hsl(0 0% 100%) 50%, transparent 50%)`,
+          backgroundSize: "260px 200px",
+        }} />
+
+      {/* Top/bottom accent lines */}
+      <div className="absolute top-0 left-0 right-0 h-[1px]"
+        style={{ background: "linear-gradient(90deg, transparent, hsl(190 80% 55% / 0.2), hsl(255 70% 55% / 0.15), transparent)" }} />
+      <div className="absolute bottom-0 left-0 right-0 h-[1px]"
+        style={{ background: "linear-gradient(90deg, transparent, hsl(255 70% 55% / 0.15), hsl(190 80% 55% / 0.2), transparent)" }} />
 
       <div className="container max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid md:grid-cols-4 gap-4">
           {stats.map((s, i) => (
-            <motion.div
+            <div
               key={s.label}
-              className="text-center py-8 rounded-lg border cursor-default"
+              className="text-center py-8 rounded-lg border cursor-default transition-shadow duration-300 hover:shadow-lg"
               style={{
                 background: "linear-gradient(135deg, hsl(240 18% 12%) 0%, hsl(240 15% 8%) 100%)",
                 borderColor: "hsl(240 10% 20%)",
-              }}
-              initial={{ opacity: 0, scale: 0.93 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.1, ease: [0.42, 0, 0.58, 1] }}
-              whileHover={{
-                boxShadow: "0 12px 40px -4px hsl(190 80% 55% / 0.15), 0 0 20px hsl(190 80% 55% / 0.06)",
-                borderColor: "hsl(190 80% 55% / 0.2)",
-                transition: { duration: 0.3 },
+                opacity: isInView ? 1 : 0,
+                transform: isInView ? "scale(1)" : "scale(0.93)",
+                transition: `opacity 0.5s ${i * 0.1}s ease, transform 0.5s ${i * 0.1}s ease`,
               }}
             >
               <div className="font-calligraphy text-5xl mb-2 tabular-nums" style={{ color: "hsl(0 0% 95%)" }}>
@@ -86,7 +87,7 @@ const StatsSection = () => {
               </div>
               <div className="font-display text-xs tracking-widest uppercase mb-1" style={{ color: "hsl(190 80% 55%)" }}>{s.label}</div>
               <div className="text-xs" style={{ color: "hsl(240 6% 50%)" }}>{s.sub}</div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
