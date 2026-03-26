@@ -69,7 +69,9 @@ const StatsSection = () => {
         style={{ background: "linear-gradient(90deg, transparent, hsl(255 70% 55% / 0.15), hsl(190 80% 55% / 0.2), transparent)" }} />
 
       <div className="container max-w-7xl mx-auto px-6 relative z-10">
-        <h2 className="font-display text-center text-xs tracking-[0.35em] uppercase mb-10" style={{ color: "hsl(190 80% 55%)" }}>Results</h2>
+        <h2 className="font-calligraphy text-center text-4xl md:text-5xl tracking-tight mb-12" style={{ color: "hsl(0 0% 95%)" }}>
+          Results
+        </h2>
         <div className="grid md:grid-cols-4 gap-4">
           {stats.map((s, i) => (
             <div
