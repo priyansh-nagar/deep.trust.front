@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import scanningVideo from "../../public/scanning-room.mp4.asset.json";
+const SCANNING_VIDEO_URL = "https://id-preview--dd787150-4892-446d-9755-e5c772d18242.lovable.app/__l5e/assets-v1/1a6b2376-4225-4a94-86b2-128f45e43a71/scanning-room.mp4";
 
 const processSteps = [
   {
