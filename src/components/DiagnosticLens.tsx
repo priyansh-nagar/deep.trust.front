@@ -56,7 +56,7 @@ const DiagnosticLens = () => {
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-[0]"
         style={{ opacity: 0.5 }}
-        src={scanningVideo.url}
+        src={SCANNING_VIDEO_URL}
       />
 
       {/* Dark overlay for readability */}
