@@ -25,7 +25,7 @@ const HeroQuote = () => {
         loop
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-[0]"
-        src={labVideo.url}
+        src={LAB_VIDEO_URL}
       />
 
       {/* Dark overlay */}
