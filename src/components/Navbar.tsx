@@ -31,7 +31,7 @@ const Navbar = () => {
             </button>
           ))}
         </div>
-        <a href="https://deeptrust-sandy.vercel.app/" target="_blank" rel="noopener noreferrer" className="bg-primary text-primary-foreground px-5 py-2 font-display text-xs tracking-wider hover:opacity-90 transition-all duration-150 uppercase rounded-lg inline-block">
+        <a href="https://deeptrust-sandy.vercel.app/" target="_blank" className="bg-primary text-primary-foreground px-5 py-2 font-display text-xs tracking-wider hover:opacity-90 transition-all duration-150 uppercase rounded-lg inline-block">
           Get Started
         </a>
       </div>
