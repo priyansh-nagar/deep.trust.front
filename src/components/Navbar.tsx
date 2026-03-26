@@ -1,4 +1,4 @@
-import { Shield } from "lucide-react";
+import deeptrustLogo from "@/assets/deeptrust-logo.png";
 
 const navItems = [
   { label: "Features", id: "features" },
