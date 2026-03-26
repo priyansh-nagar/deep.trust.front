@@ -118,7 +118,6 @@ const HeroQuote = () => {
           >
             <a
               href="https://deeptrust-sandy.vercel.app/"
-              rel="noopener noreferrer"
               className="relative bg-primary text-primary-foreground px-8 py-4 font-display text-sm tracking-wider hover:opacity-90 transition-opacity duration-150 uppercase rounded-lg shadow-deep inline-block"
             >
               <span
