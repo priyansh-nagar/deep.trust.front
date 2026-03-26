@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Image, Mic, ScanEye, AudioLines } from "lucide-react";
-import labVideo from "../../public/lab-robots.mp4.asset.json";
+const LAB_VIDEO_URL = "https://id-preview--dd787150-4892-446d-9755-e5c772d18242.lovable.app/__l5e/assets-v1/675fdc9e-c9d5-4d3a-b2b8-0431b4f75816/lab-robots.mp4";
 
 const words = ["Trust", "is", "built", "on", "truth,", "not", "appearances."];
 
@@ -25,7 +25,7 @@ const HeroQuote = () => {
         loop
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-[0]"
-        src={labVideo.url}
+        src={LAB_VIDEO_URL}
       />
 
       {/* Dark overlay */}
