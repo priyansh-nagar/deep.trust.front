@@ -126,10 +126,12 @@ const HeroQuote = () => {
               />
               Start Free Trial
             </a>
-            <button className="border px-8 py-4 font-display text-sm tracking-wider transition-opacity duration-150 hover:opacity-80 uppercase rounded-lg"
-              style={{ borderColor: "hsl(190 80% 55% / 0.3)", color: "hsl(0 0% 85%)", background: "hsl(240 15% 10% / 0.6)" }}>
-              View Demo
-            </button>
+            <a href="https://drive.google.com/file/d/FILE_ID/preview" target="_blank">
+  <button className="border px-8 py-4 font-display text-sm tracking-wider transition-opacity duration-150 hover:opacity-80 uppercase rounded-lg"
+    style={{ borderColor: "hsl(190 80% 55% / 0.3)", color: "hsl(0 0% 85%)", background: "hsl(240 15% 10% / 0.6)" }}>
+    View Demo
+  </button>
+</a>
           </motion.div>
 
           <motion.div
